@@ -1,5 +1,6 @@
 //pc3656
 //Programs that slice a sentence into words.
+//2024/11/18
 
 #include <iostream>
 #include <string>
@@ -86,7 +87,7 @@ bool isAlpha(char c) {
     if(int(c) >= int('A') && int(c) <= int('Z')) {
         return true;
     }
-    else if(int(c) >= int('Z') && int(c) <= int('z')) {
+    else if(int(c) >= int('a') && int(c) <= int('z')) {
         return true;
     }
     else return false;
