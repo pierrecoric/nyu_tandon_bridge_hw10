@@ -6,7 +6,7 @@
 using namespace std;
 
 int* findMissing(int arr[], int n, int& resArrSize);
-int * extendArray(int * &old, int oldSize, int newSize);
+void extendArray(int * &old, int oldSize, int newSize);
 void printArray(int* arr, int size);
 
 int main() {
@@ -50,7 +50,7 @@ int* findMissing(int arr[], int n, int& resArrSize) {
 } 
 
 //Function that extends an array given a new size.
-int * extendArray(int * &old, int oldSize, int newSize) {
+void extendArray(int * &old, int oldSize, int newSize) {
     int *temp;
     temp = new int[newSize];
     for (int i = 0; i < oldSize; i++) {
@@ -58,7 +58,6 @@ int * extendArray(int * &old, int oldSize, int newSize) {
     }
     delete[] old;
     old = temp;
-    return old;
 }
 
 //Function that prints out the content of an array of integers.
