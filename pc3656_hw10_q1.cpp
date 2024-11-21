@@ -7,7 +7,7 @@
 using namespace std;
 
 string* createWordsArray(string sentence, int& outWordsArrSize);
-string * extendArray(string * &old, int oldSize, int newSize);
+void extendArray(string * &old, int oldSize, int newSize);
 void printWordArray(string* str, int size);
 bool isAlpha(char c);
 
@@ -56,11 +56,11 @@ string* createWordsArray(string sentence, int& outWordsArrSize){
             word += sentence[c];
         }
         //If a word is finished
-        else if(sentence[c] == ' ') {
+        else if(sentence[c] == ' ' && newWord) {
             //If the array needs to be extended, double the size of the array.
             if(outWordsArrSize == currentSize) {
                 currentSize *= 2;
-                wordArray = extendArray(wordArray, outWordsArrSize, currentSize);
+                extendArray(wordArray, outWordsArrSize, currentSize);
             }
             //Append the word to the array and increment the size
             wordArray[outWordsArrSize] = word;
@@ -74,7 +74,7 @@ string* createWordsArray(string sentence, int& outWordsArrSize){
          if(outWordsArrSize == currentSize) {
                 //Only increment by one to store the last word if needed.
                 currentSize ++;
-                wordArray = extendArray(wordArray, outWordsArrSize, currentSize);
+                extendArray(wordArray, outWordsArrSize, currentSize);
             }
             wordArray[outWordsArrSize] = word;
             outWordsArrSize ++;
@@ -106,7 +106,7 @@ void printWordArray(string* str, int size) {
 }
 
 //Function that extends an array given a new size.
-string * extendArray(string * &old, int oldSize, int newSize) {
+void extendArray(string * &old, int oldSize, int newSize) {
     string *tempStr;
     tempStr = new string[newSize];
     for (int i = 0; i < oldSize; i++) {
@@ -114,5 +114,4 @@ string * extendArray(string * &old, int oldSize, int newSize) {
     }
     delete[] old;
     old = tempStr;
-    return old;
 }
